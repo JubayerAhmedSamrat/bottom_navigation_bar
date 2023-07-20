@@ -68,6 +68,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  int _selectedindex = 0;
+  List<Color> itemColors = [
+    Colors.blue,
+    Colors.blue,
+    Colors.blue,
+    Colors.blue,
+    Colors.blue,
+    Colors.blue,
+  ];
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -120,11 +129,11 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-            IconButton(onPressed: () => _onItemTab(0), icon: Icon(Icons.home)),
-            IconButton(onPressed: () => _onItemTab(1), icon: Icon(Icons.search)),
+            IconButton(onPressed: () => _onItemTab(0), color: itemColors[0], icon: Icon(Icons.home)),
+            IconButton(onPressed: () => _onItemTab(1), color: itemColors[1], icon: Icon(Icons.search)),
             SizedBox(width: 60),
-            IconButton(onPressed: () => _onItemTab(2), icon: Icon(Icons.notification_add)),
-            IconButton(onPressed: () => _onItemTab(3), icon: Icon(Icons.person)),
+            IconButton(onPressed: () => _onItemTab(2), color: itemColors[2], icon: Icon(Icons.notification_add)),
+            IconButton(onPressed: () => _onItemTab(3), color: itemColors[3], icon: Icon(Icons.person)),
           ],),
         )
       ),
@@ -139,7 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _onItemTab(int index) {
     setState((){
-      
+      var _selectedindex = index;
+      itemColors = List.generate(itemColors.length, (i) => i == index? Colors.red: Colors.blue);
     });
   }
 }
